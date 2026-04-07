@@ -12,6 +12,12 @@ Custom StarCraft Kerrigan voice pack with holographic notification overlay for [
 - **Holographic overlay** — Terran Ghost comm transmission aesthetic with scanlines, pulsing cyan glow, sweep animation, and tactical HUD brackets
 - **Cinematic icon** — Heart of the Swarm Kerrigan portrait
 
+### Notification in action
+
+![Notification Demo](assets/notification-demo.gif)
+
+*Typewriter text animation with blinking cursor, holographic glow, and scan beam sweep*
+
 ---
 
 ## Install (step by step)
@@ -88,18 +94,18 @@ A Python venv is created automatically on first run. After generating, add the n
 
 ## Sound Preview
 
-Preview all 42 voice lines with `peon preview --list` after installing, or browse them below:
+Preview all 42 voice lines with `peon preview --list` after installing, or click any sound below to listen on GitHub:
 
 <details>
 <summary><b>session.start</b> — 5 sounds</summary>
 
 | Sound | Line |
 |-------|------|
-| KerriganReporting | "Lieutenant Kerrigan reporting" |
-| ImReady | "I'm ready" |
-| SystemsReady | "All systems ready. Awaiting your orders." |
-| GhostOnline | "Ghost online. Ready for action." |
-| ChannelOpen | "Channel open. What are your orders?" |
+| [KerriganReporting](pack/sounds/KerriganReporting.mp3) | "Lieutenant Kerrigan reporting" |
+| [ImReady](pack/sounds/ImReady.mp3) | "I'm ready" |
+| [SystemsReady](pack/sounds/SystemsReady.mp3) | "All systems ready. Awaiting your orders." |
+| [GhostOnline](pack/sounds/GhostOnline.mp3) | "Ghost online. Ready for action." |
+| [ChannelOpen](pack/sounds/ChannelOpen.mp3) | "Channel open. What are your orders?" |
 
 </details>
 
@@ -108,17 +114,17 @@ Preview all 42 voice lines with `peon preview --list` after installing, or brows
 
 | Sound | Line |
 |-------|------|
-| IGotcha | "I gotcha" |
-| ThinkingSameThing | "Thinking the same thing" |
-| BeAPleasure | "It'd be a pleasure" |
-| IReadYou | "I read you" |
-| OnIt | "On it. Consider it done." |
-| TargetAcquired | "Target acquired. Moving in." |
-| Analyzing | "Analyzing the situation. Stand by." |
-| Understood | "Understood. Moving to intercept." |
-| CopyThat | "Copy that. Engaging now." |
-| WayAheadOfYou | "Way ahead of you." |
-| ConsiderItHandled | "Consider it handled." |
+| [IGotcha](pack/sounds/IGotcha.mp3) | "I gotcha" |
+| [ThinkingSameThing](pack/sounds/ThinkingSameThing.mp3) | "Thinking the same thing" |
+| [BeAPleasure](pack/sounds/BeAPleasure.mp3) | "It'd be a pleasure" |
+| [IReadYou](pack/sounds/IReadYou.mp3) | "I read you" |
+| [OnIt](pack/sounds/OnIt.mp3) | "On it. Consider it done." |
+| [TargetAcquired](pack/sounds/TargetAcquired.mp3) | "Target acquired. Moving in." |
+| [Analyzing](pack/sounds/Analyzing.mp3) | "Analyzing the situation. Stand by." |
+| [Understood](pack/sounds/Understood.mp3) | "Understood. Moving to intercept." |
+| [CopyThat](pack/sounds/CopyThat.mp3) | "Copy that. Engaging now." |
+| [WayAheadOfYou](pack/sounds/WayAheadOfYou.mp3) | "Way ahead of you." |
+| [ConsiderItHandled](pack/sounds/ConsiderItHandled.mp3) | "Consider it handled." |
 
 </details>
 
@@ -127,13 +133,13 @@ Preview all 42 voice lines with `peon preview --list` after installing, or brows
 
 | Sound | Line |
 |-------|------|
-| ImReady | "I'm ready" |
-| WaitingOnYou | "I'm waiting on you" |
-| TaskDone | "Task complete. What's next?" |
-| MissionComplete | "Mission complete. Ready for debriefing." |
-| AreaSecure | "Area secure. Awaiting new directives." |
-| ObjectiveComplete | "Objective complete. What else you got?" |
-| CleanKill | "Clean kill. No complications." |
+| [ImReady](pack/sounds/ImReady.mp3) | "I'm ready" |
+| [WaitingOnYou](pack/sounds/WaitingOnYou.mp3) | "I'm waiting on you" |
+| [TaskDone](pack/sounds/TaskDone.mp3) | "Task complete. What's next?" |
+| [MissionComplete](pack/sounds/MissionComplete.mp3) | "Mission complete. Ready for debriefing." |
+| [AreaSecure](pack/sounds/AreaSecure.mp3) | "Area secure. Awaiting new directives." |
+| [ObjectiveComplete](pack/sounds/ObjectiveComplete.mp3) | "Objective complete. What else you got?" |
+| [CleanKill](pack/sounds/CleanKill.mp3) | "Clean kill. No complications." |
 
 </details>
 
@@ -142,13 +148,13 @@ Preview all 42 voice lines with `peon preview --list` after installing, or brows
 
 | Sound | Line |
 |-------|------|
-| Death1 | "Ah!" |
-| Death2 | "Ah!" |
-| SomethingWrong | "Something went wrong. We have a problem." |
-| ErrorDetected | "Error detected. Recalibrating." |
-| WeHaveAProblem | "We have a problem here." |
-| DamnIt | "Damn it. That was not supposed to happen." |
-| SystemFailure | "System failure. Rerouting." |
+| [Death1](pack/sounds/Death1.mp3) | "Ah!" |
+| [Death2](pack/sounds/Death2.mp3) | "Ah!" |
+| [SomethingWrong](pack/sounds/SomethingWrong.mp3) | "Something went wrong. We have a problem." |
+| [ErrorDetected](pack/sounds/ErrorDetected.mp3) | "Error detected. Recalibrating." |
+| [WeHaveAProblem](pack/sounds/WeHaveAProblem.mp3) | "We have a problem here." |
+| [DamnIt](pack/sounds/DamnIt.mp3) | "Damn it. That was not supposed to happen." |
+| [SystemFailure](pack/sounds/SystemFailure.mp3) | "System failure. Rerouting." |
 
 </details>
 
@@ -157,13 +163,13 @@ Preview all 42 voice lines with `peon preview --list` after installing, or brows
 
 | Sound | Line |
 |-------|------|
-| WhatNow | "What now?" |
-| WaitingOnYou | "I'm waiting on you" |
-| NeedInput | "I need your input, commander." |
-| StandingBy | "Standing by for further instructions." |
-| TalkToMe | "Talk to me. What do you need?" |
-| OrdersCommander | "Orders, commander?" |
-| WaitingForSignal | "Waiting for your signal." |
+| [WhatNow](pack/sounds/WhatNow.mp3) | "What now?" |
+| [WaitingOnYou](pack/sounds/WaitingOnYou.mp3) | "I'm waiting on you" |
+| [NeedInput](pack/sounds/NeedInput.mp3) | "I need your input, commander." |
+| [StandingBy](pack/sounds/StandingBy.mp3) | "Standing by for further instructions." |
+| [TalkToMe](pack/sounds/TalkToMe.mp3) | "Talk to me. What do you need?" |
+| [OrdersCommander](pack/sounds/OrdersCommander.mp3) | "Orders, commander?" |
+| [WaitingForSignal](pack/sounds/WaitingForSignal.mp3) | "Waiting for your signal." |
 
 </details>
 
@@ -172,13 +178,13 @@ Preview all 42 voice lines with `peon preview --list` after installing, or brows
 
 | Sound | Line |
 |-------|------|
-| EasilyAmused | "Easily amused, huh?" |
-| Telepath | "Doesn't take a telepath to know what you're thinking" |
-| AnnoyingPeople | "You get off on annoying people, don't you?" |
-| GotAJobToDo | "I've got a job to do" |
-| DontPushIt | "Don't push it." |
-| PatienceWearing | "My patience is wearing thin." |
-| LastWarning | "This is your last warning." |
+| [EasilyAmused](pack/sounds/EasilyAmused.mp3) | "Easily amused, huh?" |
+| [Telepath](pack/sounds/Telepath.mp3) | "Doesn't take a telepath to know what you're thinking" |
+| [AnnoyingPeople](pack/sounds/AnnoyingPeople.mp3) | "You get off on annoying people, don't you?" |
+| [GotAJobToDo](pack/sounds/GotAJobToDo.mp3) | "I've got a job to do" |
+| [DontPushIt](pack/sounds/DontPushIt.mp3) | "Don't push it." |
+| [PatienceWearing](pack/sounds/PatienceWearing.mp3) | "My patience is wearing thin." |
+| [LastWarning](pack/sounds/LastWarning.mp3) | "This is your last warning." |
 
 </details>
 
