@@ -400,7 +400,7 @@ function run(argv) {
     tagLabel.cell.setWraps(false);
     panel.addSubview(tagLabel);
 
-    // ── Message label — sci-fi monospace ──
+    // ── Message label — sci-fi monospace with typewriter animation ──
     var font = $.NSFont.fontWithNameSize('Menlo-Bold', 15);
     if (!font || font.isNil()) font = $.NSFont.boldSystemFontOfSize(15);
     var textHeight = 22;
@@ -408,24 +408,33 @@ function run(argv) {
     var label = $.NSTextField.alloc.initWithFrame(
       $.NSMakeRect(textX, textY, textWidth, textHeight)
     );
-    label.setStringValue($(message));
+    label.setStringValue($(''));  // start empty for typewriter effect
     label.setBezeled(false);
     label.setDrawsBackground(false);
     label.setEditable(false);
     label.setSelectable(false);
-    label.setTextColor($.NSColor.colorWithSRGBRedGreenBlueAlpha(0.85, 0.95, 1.0, 1.0));
     label.setFont(font);
     label.setLineBreakMode($.NSLineBreakByTruncatingTail);
     label.cell.setWraps(false);
 
+    // Holographic cyan text color with glow
+    var textColor = $.NSColor.colorWithSRGBRedGreenBlueAlpha(glowR * 0.6 + 0.4, glowG * 0.6 + 0.4, glowB * 0.5 + 0.5, 1.0);
+    label.setTextColor(textColor);
+
     // Text glow via shadow
     var shadow = $.NSShadow.alloc.init;
-    shadow.shadowColor = $.NSColor.colorWithSRGBRedGreenBlueAlpha(glowR, glowG, glowB, 0.7);
+    shadow.shadowColor = $.NSColor.colorWithSRGBRedGreenBlueAlpha(glowR, glowG, glowB, 0.8);
     shadow.shadowOffset = $.NSMakeSize(0, 0);
-    shadow.shadowBlurRadius = 8;
+    shadow.shadowBlurRadius = 10;
     label.shadow = shadow;
 
     panel.addSubview(label);
+
+    // Store label reference for typewriter animation
+    if (!this._typewriterLabels) this._typewriterLabels = [];
+    // Can't use 'this' in JXA loop scope, use global-ish array
+    windows._labels = windows._labels || [];
+    windows._labels.push(label);
 
     // ── Status bar / frequency line at bottom ──
     var statusFont = $.NSFont.fontWithNameSize('Menlo', 9);
@@ -487,6 +496,58 @@ function run(argv) {
 
     windows.push(win);
   }
+
+  // ── Typewriter animation ──
+  var labels = windows._labels || [];
+  var twIdx = 0;
+  var cursorVisible = true;
+
+  ObjC.registerSubclass({
+    name: 'PeonTypewriter',
+    superclass: 'NSObject',
+    methods: {
+      'tick:': {
+        types: ['void', ['id']],
+        implementation: function(timer) {
+          twIdx++;
+          if (twIdx > message.length) {
+            timer.invalidate();
+            // Show final text with blinking cursor
+            for (var i = 0; i < labels.length; i++) {
+              labels[i].setStringValue($(message + ' ▌'));
+            }
+            return;
+          }
+          var partial = message.substring(0, twIdx) + '▌';
+          for (var i = 0; i < labels.length; i++) {
+            labels[i].setStringValue($(partial));
+          }
+        }
+      },
+      'blink:': {
+        types: ['void', ['id']],
+        implementation: function(timer) {
+          // Only blink after typewriter is done
+          if (twIdx <= message.length) return;
+          cursorVisible = !cursorVisible;
+          var text = cursorVisible ? message + ' ▌' : message;
+          for (var i = 0; i < labels.length; i++) {
+            labels[i].setStringValue($(text));
+          }
+        }
+      }
+    }
+  });
+
+  var tw = $.PeonTypewriter.alloc.init;
+  // ~40ms per char, but ensure it finishes before dismiss
+  var charDelay = Math.min(0.04, dismiss > 0 ? (dismiss * 0.35) / Math.max(message.length, 1) : 0.04);
+  $.NSTimer.scheduledTimerWithTimeIntervalTargetSelectorUserInfoRepeats(
+    charDelay, tw, 'tick:', null, true
+  );
+  $.NSTimer.scheduledTimerWithTimeIntervalTargetSelectorUserInfoRepeats(
+    0.5, tw, 'blink:', null, true
+  );
 
   // Auto-dismiss timer
   if (dismiss > 0) {
