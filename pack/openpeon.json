@@ -2,7 +2,7 @@
   "cesp_version": "1.0",
   "name": "sc_kerrigan",
   "display_name": "Sarah Kerrigan (StarCraft)",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": {
     "name": "garysheng",
     "github": "garysheng"
@@ -26,6 +26,16 @@
           "file": "sounds/SystemsReady.mp3",
           "label": "All systems ready. Awaiting your orders.",
           "sha256": "f92053920b40dd3094ce72381250212d197a9769f49657c728dacf12c9cce83d"
+        },
+        {
+          "file": "sounds/GhostOnline.mp3",
+          "label": "Ghost online. Ready for action.",
+          "sha256": "0e58aafb19058e1b076ab0e6a888689c602913d3acfa35c7af6f73bf92d963d6"
+        },
+        {
+          "file": "sounds/ChannelOpen.mp3",
+          "label": "Channel open. What are your orders?",
+          "sha256": "7edda0cab57c33a7932bc8444f8a1f28323f4ca9223136ae79d2993f5203006a"
         }
       ]
     },
@@ -65,6 +75,26 @@
           "file": "sounds/Analyzing.mp3",
           "label": "Analyzing the situation. Stand by.",
           "sha256": "0d944d3a47e3d1169b02978c92e1cac1a11746da95af7f4a62acc2bc046847c5"
+        },
+        {
+          "file": "sounds/Understood.mp3",
+          "label": "Understood. Moving to intercept.",
+          "sha256": "cf89d4572bbd90f45c7a91545f9a5227d9892cf31e8a1455430a9924eb93a1f7"
+        },
+        {
+          "file": "sounds/CopyThat.mp3",
+          "label": "Copy that. Engaging now.",
+          "sha256": "2a3e5d8f9a3ca90080fc389f0de188a0386dbf53931bb8b4e82976d60c0d4a8d"
+        },
+        {
+          "file": "sounds/WayAheadOfYou.mp3",
+          "label": "Way ahead of you.",
+          "sha256": "da5b94a33c2234f2710e93e9945bcf1bd6085a8e4f2b95d441c95504b5f5b258"
+        },
+        {
+          "file": "sounds/ConsiderItHandled.mp3",
+          "label": "Consider it handled.",
+          "sha256": "86612ade6743029aa492382e714c13f782da9990fadac87f54802ab705cde68b"
         }
       ]
     },
@@ -89,6 +119,21 @@
           "file": "sounds/MissionComplete.mp3",
           "label": "Mission complete. Ready for debriefing.",
           "sha256": "56ed79b490f95d5d04c32ded105cc2f140819dd81e0c0c4747ab705d61806c99"
+        },
+        {
+          "file": "sounds/AreaSecure.mp3",
+          "label": "Area secure. Awaiting new directives.",
+          "sha256": "5561c7c389ea635b0d9a0b3c0b234c7900c867777761559ee4ce07890685ee1e"
+        },
+        {
+          "file": "sounds/ObjectiveComplete.mp3",
+          "label": "Objective complete. What else you got?",
+          "sha256": "808117e82b1e95459fefb8f1f27598e28a9dbd4e8756e9bf7d9a3005b6af1510"
+        },
+        {
+          "file": "sounds/CleanKill.mp3",
+          "label": "Clean kill. No complications.",
+          "sha256": "b5545f8d48fb65122023aa98396eb4def0f1c054787f407f585c65eff59a6466"
         }
       ]
     },
@@ -113,6 +158,21 @@
           "file": "sounds/ErrorDetected.mp3",
           "label": "Error detected. Recalibrating.",
           "sha256": "4449f40b7235347c9b753db73ad93e71c566e74abf3105da96bd8c2f0925f716"
+        },
+        {
+          "file": "sounds/WeHaveAProblem.mp3",
+          "label": "We have a problem here.",
+          "sha256": "6ded7b17e5e3a3296fc616ff7bfba9588303b24588ae9627f1ada19b1d1b8333"
+        },
+        {
+          "file": "sounds/DamnIt.mp3",
+          "label": "Damn it. That was not supposed to happen.",
+          "sha256": "4832880ad7b8533b92280baf4e8d624e348b77f395caa8ba5d1318d2d03b9732"
+        },
+        {
+          "file": "sounds/SystemFailure.mp3",
+          "label": "System failure. Rerouting.",
+          "sha256": "2b7cac4f7f8e13498ab1d429ea1bdc359e604efd9393b0a276027466600edf7b"
         }
       ]
     },
@@ -137,6 +197,21 @@
           "file": "sounds/StandingBy.mp3",
           "label": "Standing by for further instructions.",
           "sha256": "b8d43863a9f8f63d8250586c96c8492bebf2dcdafcf701b15d4035beaa1de550"
+        },
+        {
+          "file": "sounds/TalkToMe.mp3",
+          "label": "Talk to me. What do you need?",
+          "sha256": "f91541512a5c516fd78c3653cdd8ba938b6bc7a75aef244dba9d08e392bdbbca"
+        },
+        {
+          "file": "sounds/OrdersCommander.mp3",
+          "label": "Orders, commander?",
+          "sha256": "6fed29976b140a175d75ebca377d38fc495a3a859b11d7e08603ae08bb0ef8dd"
+        },
+        {
+          "file": "sounds/WaitingForSignal.mp3",
+          "label": "Waiting for your signal.",
+          "sha256": "c1276edfb7d70e180d6a868b7fd8a621c08fc6f799d680a9aeab8b6aa720f5ce"
         }
       ]
     },
@@ -161,6 +236,21 @@
           "file": "sounds/GotAJobToDo.mp3",
           "label": "I've got a job to do",
           "sha256": "b7d54d020b916979caf8a5760919730df42e032d03843f5a6b1ddbb0d160ad60"
+        },
+        {
+          "file": "sounds/DontPushIt.mp3",
+          "label": "Don't push it.",
+          "sha256": "d624eed35cca13daaf51903329368195748c6d180a4daca73b1edc2c213d9a28"
+        },
+        {
+          "file": "sounds/PatienceWearing.mp3",
+          "label": "My patience is wearing thin.",
+          "sha256": "f1acc033cf8b75b7d44b21ce95e25f8268d63004b6c7d9637c2a5ed58ca86898"
+        },
+        {
+          "file": "sounds/LastWarning.mp3",
+          "label": "This is your last warning.",
+          "sha256": "22dd5f2a575afb1c6d460b5dd0e0597a1f3588bc21304cb7c86aba2a13a57a2f"
         }
       ]
     }
