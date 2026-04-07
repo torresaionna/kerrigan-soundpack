@@ -19,6 +19,12 @@ fi
 GEN_TEXT="$1"
 OUT_NAME="$2"
 
+# Validate OUT_NAME: alphanumeric and underscore only (prevent path traversal / injection)
+if [[ ! "$OUT_NAME" =~ ^[A-Za-z0-9_]+$ ]]; then
+  echo "Error: OutputName must be alphanumeric/underscore only (got: $OUT_NAME)"
+  exit 1
+fi
+
 # Create/activate venv if needed
 VENV_DIR="$SCRIPT_DIR/.venv"
 if [ ! -d "$VENV_DIR" ]; then
@@ -35,25 +41,32 @@ FINAL_MP3="$OUTDIR/${OUT_NAME}.mp3"
 
 echo "Generating: \"$GEN_TEXT\" -> $OUT_NAME"
 
-python3 -c "
+# Pass arguments safely via environment variables (no shell interpolation into Python)
+GEN_TEXT="$GEN_TEXT" REF_AUDIO="$REF_AUDIO" REF_TEXT="$REF_TEXT" TMP_WAV="$TMP_WAV" \
+python3 -c '
+import os
 from f5_tts.api import F5TTS
 tts = F5TTS()
 tts.infer(
-    ref_file='$REF_AUDIO',
-    ref_text=\"\"\"$REF_TEXT\"\"\",
-    gen_text=\"\"\"$GEN_TEXT\"\"\",
-    file_wave='$TMP_WAV',
+    ref_file=os.environ["REF_AUDIO"],
+    ref_text=os.environ["REF_TEXT"],
+    gen_text=os.environ["GEN_TEXT"],
+    file_wave=os.environ["TMP_WAV"],
 )
-print('WAV generated')
-"
+print("WAV generated")
+'
 
 # Convert to mp3
-python3 -c "
+TMP_WAV="$TMP_WAV" FINAL_MP3="$FINAL_MP3" \
+python3 -c '
+import os
 from pydub import AudioSegment
-wav = AudioSegment.from_wav('$TMP_WAV')
-wav.export('$FINAL_MP3', format='mp3', bitrate='192k')
-print(f'MP3: $FINAL_MP3 ({len(wav)/1000:.1f}s)')
-"
+tmp = os.environ["TMP_WAV"]
+out = os.environ["FINAL_MP3"]
+wav = AudioSegment.from_wav(tmp)
+wav.export(out, format="mp3", bitrate="192k")
+print(f"MP3: {out} ({len(wav)/1000:.1f}s)")
+'
 
 echo "Done! Add to openpeon.json manually:"
 HASH=$(shasum -a 256 "$FINAL_MP3" | cut -d' ' -f1)

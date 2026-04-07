@@ -86,16 +86,101 @@ A Python venv is created automatically on first run. After generating, add the n
 
 ---
 
-## Sound categories
+## Sound Preview
 
-| Category | Count | Purpose |
-|----------|-------|---------|
-| session.start | 5 | New session begins |
-| task.acknowledge | 11 | Agent starts working |
-| task.complete | 7 | Agent finishes task |
-| task.error | 7 | Something went wrong |
-| input.required | 7 | Waiting for user input |
-| user.spam | 7 | Too many rapid inputs |
+Preview all 42 voice lines with `peon preview --list` after installing, or browse them below:
+
+<details>
+<summary><b>session.start</b> — 5 sounds</summary>
+
+| Sound | Line |
+|-------|------|
+| KerriganReporting | "Lieutenant Kerrigan reporting" |
+| ImReady | "I'm ready" |
+| SystemsReady | "All systems ready. Awaiting your orders." |
+| GhostOnline | "Ghost online. Ready for action." |
+| ChannelOpen | "Channel open. What are your orders?" |
+
+</details>
+
+<details>
+<summary><b>task.acknowledge</b> — 11 sounds</summary>
+
+| Sound | Line |
+|-------|------|
+| IGotcha | "I gotcha" |
+| ThinkingSameThing | "Thinking the same thing" |
+| BeAPleasure | "It'd be a pleasure" |
+| IReadYou | "I read you" |
+| OnIt | "On it. Consider it done." |
+| TargetAcquired | "Target acquired. Moving in." |
+| Analyzing | "Analyzing the situation. Stand by." |
+| Understood | "Understood. Moving to intercept." |
+| CopyThat | "Copy that. Engaging now." |
+| WayAheadOfYou | "Way ahead of you." |
+| ConsiderItHandled | "Consider it handled." |
+
+</details>
+
+<details>
+<summary><b>task.complete</b> — 7 sounds</summary>
+
+| Sound | Line |
+|-------|------|
+| ImReady | "I'm ready" |
+| WaitingOnYou | "I'm waiting on you" |
+| TaskDone | "Task complete. What's next?" |
+| MissionComplete | "Mission complete. Ready for debriefing." |
+| AreaSecure | "Area secure. Awaiting new directives." |
+| ObjectiveComplete | "Objective complete. What else you got?" |
+| CleanKill | "Clean kill. No complications." |
+
+</details>
+
+<details>
+<summary><b>task.error</b> — 7 sounds</summary>
+
+| Sound | Line |
+|-------|------|
+| Death1 | "Ah!" |
+| Death2 | "Ah!" |
+| SomethingWrong | "Something went wrong. We have a problem." |
+| ErrorDetected | "Error detected. Recalibrating." |
+| WeHaveAProblem | "We have a problem here." |
+| DamnIt | "Damn it. That was not supposed to happen." |
+| SystemFailure | "System failure. Rerouting." |
+
+</details>
+
+<details>
+<summary><b>input.required</b> — 7 sounds</summary>
+
+| Sound | Line |
+|-------|------|
+| WhatNow | "What now?" |
+| WaitingOnYou | "I'm waiting on you" |
+| NeedInput | "I need your input, commander." |
+| StandingBy | "Standing by for further instructions." |
+| TalkToMe | "Talk to me. What do you need?" |
+| OrdersCommander | "Orders, commander?" |
+| WaitingForSignal | "Waiting for your signal." |
+
+</details>
+
+<details>
+<summary><b>user.spam</b> — 7 sounds</summary>
+
+| Sound | Line |
+|-------|------|
+| EasilyAmused | "Easily amused, huh?" |
+| Telepath | "Doesn't take a telepath to know what you're thinking" |
+| AnnoyingPeople | "You get off on annoying people, don't you?" |
+| GotAJobToDo | "I've got a job to do" |
+| DontPushIt | "Don't push it." |
+| PatienceWearing | "My patience is wearing thin." |
+| LastWarning | "This is your last warning." |
+
+</details>
 
 ## Uninstall
 
