@@ -33,16 +33,25 @@ CURATED_PACKS=(
 
 MODE="interactive"
 USE_PACK=""
+THEME=""    # kerrigan | warcraft | auto (default: auto-detect from active pack)
 while [ $# -gt 0 ]; do
   case "$1" in
     --no-prompt)      MODE="quiet"; shift ;;
     --with-curated)   MODE="curated"; shift ;;
     --use)            USE_PACK="${2:-}"; shift 2 ;;
+    --theme)          THEME="${2:-}"; shift 2 ;;
     -h|--help)
-      sed -n '2,12p' "$0"; exit 0 ;;
+      sed -n '2,13p' "$0"; exit 0 ;;
     *) echo "Unknown arg: $1"; exit 1 ;;
   esac
 done
+
+auto_theme_for_pack() {
+  case "$1" in
+    peon*|peasant*|wc2_*|orc*|abbot|aom_*|murloc|sheogorath|molag_bal) echo "warcraft" ;;
+    *) echo "kerrigan" ;;
+  esac
+}
 
 if [ ! -d "$PEON_DIR" ]; then
   echo "Error: peon-ping not found at $PEON_DIR"
@@ -51,9 +60,23 @@ if [ ! -d "$PEON_DIR" ]; then
   exit 1
 fi
 
-# ── 1. Holographic overlay (universal — applies to every pack) ─────────────
-echo "▸ Installing holographic overlay..."
-cp "$SCRIPT_DIR/overlay/mac-overlay.js" "$PEON_DIR/scripts/mac-overlay.js"
+# ── 1. Overlay theme (universal — applies to every pack) ──────────────────
+# Pick theme: explicit --theme wins; else infer from --use pack; else default kerrigan.
+if [ -z "$THEME" ]; then
+  if [ -n "$USE_PACK" ]; then
+    THEME="$(auto_theme_for_pack "$USE_PACK")"
+  else
+    THEME="kerrigan"
+  fi
+fi
+THEME_FILE="$SCRIPT_DIR/overlay/mac-overlay-${THEME}.js"
+if [ ! -f "$THEME_FILE" ]; then
+  echo "Error: unknown overlay theme '$THEME' ($THEME_FILE missing)"
+  echo "Available: $(ls "$SCRIPT_DIR/overlay/" | sed -n 's/^mac-overlay-\(.*\)\.js$/\1/p' | tr '\n' ' ')"
+  exit 1
+fi
+echo "▸ Installing overlay theme: $THEME"
+cp "$THEME_FILE" "$PEON_DIR/scripts/mac-overlay.js"
 
 # ── 2. Bundled packs (everything under packs/) ─────────────────────────────
 BUNDLED=()

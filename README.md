@@ -8,10 +8,13 @@ A polished voice-pack kit for [peon-ping](https://github.com/PeonPing/peon-ping)
 
 ![Overview](assets/overview.png)
 
-- **Holographic overlay** — Terran Ghost comm transmission aesthetic with scanlines, pulsing cyan glow, sweep animation, tactical HUD brackets, typewriter text animation. Applies to **every pack** you install.
+- **Two overlay themes** — swap with `bash tools/switch-theme.sh <theme>`:
+  - **kerrigan** — Terran Ghost holographic transmission: cyan scanlines, sweep beam, HUD brackets, frequency readout.
+  - **warcraft** — Horde war council: dark obsidian panel, orc-green glow, gold iron rivets, torch ember sweep, rune + chant status bar ("⚔ FOR THE HORDE", "ZUG ZUG").
 - **Bundled Kerrigan pack** — 42 voice lines (14 original StarCraft + 28 AI-generated via F5-TTS).
-- **One-shot curated install** — pulls peon, glados, sopranos, duke_nukem, sheogorath, rick, tf2_engineer, sc_marine, sc_medic from the peon-ping registry with a single flag.
-- **Multi-voice TTS** — clone any voice from a ~10-second reference and generate new lines on demand.
+- **Bundled peon_expanded scaffold** — 77 Warcraft-flavored labels across 7 CESP categories, ready to batch-generate via F5-TTS.
+- **One-shot curated install** — pulls peon, glados, sopranos, duke_nukem, sheogorath, rick, tf2_engineer, sc_marine, sc_medic from the peon-ping registry with `--with-curated`.
+- **Multi-voice TTS** — clone any voice from a ~10-second reference and generate new lines (or whole packs) on demand.
 
 ### Notification in action
 
@@ -46,9 +49,19 @@ The interactive installer will:
 ### Non-interactive flags
 
 ```bash
-bash install.sh --no-prompt              # overlay + bundled packs only
-bash install.sh --with-curated           # + curated registry packs
-bash install.sh --use glados             # set active voice non-interactively
+bash install.sh --no-prompt                        # overlay + bundled packs only
+bash install.sh --with-curated                     # + curated registry packs
+bash install.sh --use glados                       # set active voice non-interactively
+bash install.sh --theme warcraft --use peon        # warcraft overlay + orc peon active
+```
+
+### Swap overlay themes without reinstalling
+
+```bash
+bash tools/switch-theme.sh warcraft     # orc war council overlay
+bash tools/switch-theme.sh kerrigan     # ghost protocol holographic overlay
+bash tools/switch-theme.sh auto         # pick based on active peon-ping pack
+bash tools/switch-theme.sh --list       # list available themes
 ```
 
 ### Step 3 — Verify
@@ -120,7 +133,7 @@ The mp3 lands in `packs/sc_kerrigan/sounds/` and the script prints the JSON entr
 
 ### Add TTS support for another voice
 
-Any peon-ping pack can be turned into a cloneable voice. The helper bootstraps a reference from a sound the pack already ships.
+Any peon-ping pack can be turned into a cloneable voice. The helper bootstraps a reference from a sound the pack already ships (supports mp3, wav, ogg).
 
 ```bash
 # After installing (e.g.) glados via peon packs install glados:
@@ -132,6 +145,19 @@ bash add-voice.sh glados                    # auto-picks longest sound
 
 bash generate.sh glados "Still alive, just like the cake." StillAlive
 ```
+
+### Batch-generate a whole pack
+
+If you have a manifest with many labels but no sounds yet (like the bundled `peon_expanded`), generate everything in one shot:
+
+```bash
+bash tts/add-voice.sh peon                 # bootstrap reference from installed peon pack
+# Edit tts/reference/peon_ref.txt to be the exact transcript.
+bash tts/batch-generate.sh peon            # generates every missing sound, updates sha256 in manifest
+bash install.sh --no-prompt --use peon_expanded
+```
+
+Note: first run downloads the F5-TTS model (~1-2GB) and can take 15+ min on first generation. Subsequent runs are fast.
 
 ### Manually add a voice
 
@@ -149,20 +175,21 @@ To route the output into a different pack directory, add an entry to `VOICE_TO_P
 
 ```
 packs/
-  sc_kerrigan/
-    openpeon.json
-    icon.png
-    sounds/*.mp3
-  # add more bundled packs here
+  sc_kerrigan/                 # Sarah Kerrigan — 42 sounds, shipped
+  peon_expanded/               # Orc Peon expanded — 77 labels, TTS-generate to fill
 overlay/
-  mac-overlay.js               # holographic notification overlay (universal)
+  mac-overlay-kerrigan.js      # Ghost Protocol holographic theme
+  mac-overlay-warcraft.js      # Horde war council theme
 tts/
-  generate.sh                  # multi-voice TTS generator
+  generate.sh                  # single-line TTS generator
+  batch-generate.sh            # generate every missing sound in a manifest
   add-voice.sh                 # bootstrap a reference from any installed pack
   reference/
-    kerrigan_ref.wav
-    kerrigan_ref.txt
-install.sh                     # installs overlay + bundled packs + curated selection
+    kerrigan_ref.wav + .txt    # shipped reference
+    # <voice>_ref.wav files created by add-voice.sh are gitignored by default
+tools/
+  switch-theme.sh              # hot-swap overlay themes
+install.sh                     # installs overlay theme + bundled packs + curated selection
 ```
 
 ---

@@ -26,6 +26,7 @@ REF_DIR="$SCRIPT_DIR/reference"
 voice_to_pack() {
   case "$1" in
     kerrigan) echo "sc_kerrigan" ;;
+    peon)     echo "peon_expanded" ;;
     *)        echo "$1" ;;  # fallback: voice name == pack name
   esac
 }

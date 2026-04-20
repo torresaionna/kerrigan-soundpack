@@ -35,22 +35,25 @@ if [[ ! "$VOICE_ALIAS" =~ ^[A-Za-z0-9_]+$ ]]; then
   echo "Error: voice alias must be alphanumeric/underscore only"; exit 1
 fi
 
-# Pick the source mp3
+# Pick the source audio file (mp3, wav, or ogg)
 if [ -n "$REQUESTED_SOUND" ]; then
-  SRC="$PACK_SOUNDS_DIR/${REQUESTED_SOUND}.mp3"
-  if [ ! -f "$SRC" ]; then
-    # Try without the .mp3 suffix already in the name
-    SRC="$PACK_SOUNDS_DIR/${REQUESTED_SOUND}"
-  fi
-  if [ ! -f "$SRC" ]; then
+  SRC=""
+  for ext in mp3 wav ogg; do
+    if [ -f "$PACK_SOUNDS_DIR/${REQUESTED_SOUND}.${ext}" ]; then
+      SRC="$PACK_SOUNDS_DIR/${REQUESTED_SOUND}.${ext}"; break
+    fi
+  done
+  # Maybe they passed the full filename
+  [ -z "$SRC" ] && [ -f "$PACK_SOUNDS_DIR/${REQUESTED_SOUND}" ] && SRC="$PACK_SOUNDS_DIR/${REQUESTED_SOUND}"
+  if [ -z "$SRC" ]; then
     echo "Error: $REQUESTED_SOUND not found in $PACK_SOUNDS_DIR"
     exit 1
   fi
 else
-  # Auto-pick the longest mp3 (best reference quality)
-  SRC="$(find "$PACK_SOUNDS_DIR" -maxdepth 1 -name '*.mp3' -exec ls -S {} + 2>/dev/null | head -1)"
+  # Auto-pick the largest audio file (longest = best reference quality)
+  SRC="$(find "$PACK_SOUNDS_DIR" -maxdepth 1 \( -name '*.mp3' -o -name '*.wav' -o -name '*.ogg' \) -exec ls -S {} + 2>/dev/null | head -1)"
   if [ -z "$SRC" ]; then
-    echo "Error: no mp3 files in $PACK_SOUNDS_DIR"; exit 1
+    echo "Error: no audio files (mp3/wav/ogg) in $PACK_SOUNDS_DIR"; exit 1
   fi
 fi
 
@@ -70,14 +73,18 @@ MANIFEST="$PEON_DIR/packs/$PACK/openpeon.json"
 FILENAME="$(basename "$SRC")"
 SEED_TEXT=""
 if [ -f "$MANIFEST" ] && command -v python3 >/dev/null 2>&1; then
-  SEED_TEXT="$(MANIFEST="$MANIFEST" FNAME="$FILENAME" python3 -c '
+  # Strip extension for matching — manifests sometimes list .mp3 even when file is .wav
+  STEM="${FILENAME%.*}"
+  SEED_TEXT="$(MANIFEST="$MANIFEST" STEM="$STEM" python3 -c '
 import json, os
 with open(os.environ["MANIFEST"]) as f:
     data = json.load(f)
-fname = os.environ["FNAME"]
+stem = os.environ["STEM"]
 for cat in data.get("categories", {}).values():
     for s in cat.get("sounds", []):
-        if s.get("file", "").endswith(fname):
+        f = s.get("file", "")
+        fstem = os.path.splitext(os.path.basename(f))[0]
+        if fstem == stem:
             print(s.get("label", ""))
             raise SystemExit
 ' 2>/dev/null || true)"

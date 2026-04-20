@@ -2,3 +2,10 @@ tts/.venv/
 *.pyc
 __pycache__/
 .DS_Store
+
+# User-bootstrapped TTS reference audio (derived from copyrighted source packs).
+# Each user should generate their own via `bash tts/add-voice.sh <pack>`.
+# The checked-in kerrigan_ref.wav is the project-owned reference.
+tts/reference/*_ref.wav
+!tts/reference/kerrigan_ref.wav
+
