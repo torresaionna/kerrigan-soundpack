@@ -1,0 +1,120 @@
+{
+  "cesp_version": "1.0",
+  "name": "peon_expanded",
+  "display_name": "Orc Peon (Expanded — AI)",
+  "version": "0.1.0",
+  "author": {
+    "name": "torresaionna",
+    "github": "torresaionna"
+  },
+  "license": "CC-BY-NC-4.0",
+  "language": "en",
+  "notes": "Warcraft-flavored peon lines, AI-generated via F5-TTS from a reference clip of the in-game peon voice. Generate sounds with: bash tts/batch-generate.sh peon",
+  "categories": {
+    "session.start": {
+      "sounds": [
+        { "file": "sounds/ReadyToWorkBoss.mp3",     "label": "Ready to work, boss!" },
+        { "file": "sounds/ZugZug.mp3",              "label": "Zug zug." },
+        { "file": "sounds/WhatYouWant.mp3",         "label": "What you want?" },
+        { "file": "sounds/WorkAwaits.mp3",          "label": "Work awaits!" },
+        { "file": "sounds/AtYourService.mp3",       "label": "At your service, chief." },
+        { "file": "sounds/OrcReady.mp3",            "label": "Orc is ready." },
+        { "file": "sounds/ByYourCommand.mp3",       "label": "By your command." },
+        { "file": "sounds/WorkWork.mp3",            "label": "Work, work." },
+        { "file": "sounds/LokTar.mp3",              "label": "Lok'tar!" },
+        { "file": "sounds/PeonHere.mp3",            "label": "Peon here, reporting." },
+        { "file": "sounds/WhatMustBeDone.mp3",      "label": "What must be done?" }
+      ]
+    },
+    "task.acknowledge": {
+      "sounds": [
+        { "file": "sounds/ZugZugAck.mp3",           "label": "Zug zug." },
+        { "file": "sounds/WorkWorkAck.mp3",         "label": "Work, work." },
+        { "file": "sounds/OkBoss.mp3",              "label": "OK, boss." },
+        { "file": "sounds/OkieDokie.mp3",           "label": "Okie dokie." },
+        { "file": "sounds/YesMaster.mp3",           "label": "Yes, master." },
+        { "file": "sounds/RightAway.mp3",           "label": "Right away!" },
+        { "file": "sounds/OnMyWay.mp3",             "label": "On my way." },
+        { "file": "sounds/AsYouCommand.mp3",        "label": "As you command." },
+        { "file": "sounds/IGo.mp3",                 "label": "I go!" },
+        { "file": "sounds/ForTheHorde.mp3",         "label": "For the Horde!" },
+        { "file": "sounds/BeHappyTo.mp3",           "label": "Be happy to." },
+        { "file": "sounds/UnderstoodChief.mp3",     "label": "Understood, chief." },
+        { "file": "sounds/MeDoItNow.mp3",           "label": "Me do it now." },
+        { "file": "sounds/ConsiderItDone.mp3",      "label": "Consider it done." },
+        { "file": "sounds/ICanDoThat.mp3",          "label": "I can do that." }
+      ]
+    },
+    "task.complete": {
+      "sounds": [
+        { "file": "sounds/JobDone.mp3",             "label": "Job done!" },
+        { "file": "sounds/WorkComplete.mp3",        "label": "Work complete, boss." },
+        { "file": "sounds/TaskDoneBoss.mp3",        "label": "Task done, boss." },
+        { "file": "sounds/Aboo.mp3",                "label": "Aboo." },
+        { "file": "sounds/ReadyForMore.mp3",        "label": "Ready for more." },
+        { "file": "sounds/AllWorkNoPlay.mp3",       "label": "All work, no play." },
+        { "file": "sounds/LastOfIt.mp3",            "label": "That's the last of it." },
+        { "file": "sounds/WhatsNext.mp3",           "label": "What's next, boss?" },
+        { "file": "sounds/TributeDelivered.mp3",    "label": "Tribute delivered." },
+        { "file": "sounds/LokTarJobDone.mp3",       "label": "Lok'tar! Job done." },
+        { "file": "sounds/DoneBoss.mp3",            "label": "Done, boss." },
+        { "file": "sounds/FinishedWork.mp3",        "label": "Finished the work." }
+      ]
+    },
+    "task.error": {
+      "sounds": [
+        { "file": "sounds/SomethingNotRight.mp3",   "label": "Something not right." },
+        { "file": "sounds/MeNoUnderstand.mp3",      "label": "Me no understand." },
+        { "file": "sounds/Dabu.mp3",                "label": "Dabu." },
+        { "file": "sounds/BossNoLikeThis.mp3",      "label": "Boss no like this." },
+        { "file": "sounds/UghError.mp3",            "label": "Ugh." },
+        { "file": "sounds/NoCanDo.mp3",             "label": "No can do, boss." },
+        { "file": "sounds/MeFailYou.mp3",           "label": "Me fail you." },
+        { "file": "sounds/ThisBad.mp3",             "label": "This bad, very bad." },
+        { "file": "sounds/NotThatKindOfOrc.mp3",    "label": "Me not that kind of orc!" },
+        { "file": "sounds/Oopsie.mp3",              "label": "Ugh, oopsie." },
+        { "file": "sounds/ItBroken.mp3",            "label": "It broken, boss." }
+      ]
+    },
+    "input.required": {
+      "sounds": [
+        { "file": "sounds/WhatYouWantQ.mp3",        "label": "What you want?" },
+        { "file": "sounds/YesBoss.mp3",             "label": "Yes, boss?" },
+        { "file": "sounds/WaitingOnOrders.mp3",     "label": "Waiting on orders." },
+        { "file": "sounds/BossYouThere.mp3",        "label": "Boss? You there?" },
+        { "file": "sounds/MeNeedOrders.mp3",        "label": "Me need orders." },
+        { "file": "sounds/SpeakMaster.mp3",         "label": "Speak, master." },
+        { "file": "sounds/WhereToNext.mp3",         "label": "Where to next?" },
+        { "file": "sounds/WhatMustMeDo.mp3",        "label": "What must me do?" },
+        { "file": "sounds/MeWait.mp3",              "label": "Me wait for orders." },
+        { "file": "sounds/HmmInput.mp3",            "label": "Hmm? Something?" },
+        { "file": "sounds/TalkingToMe.mp3",         "label": "You talking to me, boss?" }
+      ]
+    },
+    "user.spam": {
+      "sounds": [
+        { "file": "sounds/StopPokingMe.mp3",        "label": "Stop poking me!" },
+        { "file": "sounds/MeNoTouchy.mp3",          "label": "Me no touchy!" },
+        { "file": "sounds/StopItBoss.mp3",          "label": "Stop it, boss." },
+        { "file": "sounds/EnoughSpam.mp3",          "label": "Enough!" },
+        { "file": "sounds/MeWorkNotPlay.mp3",       "label": "Me work, not play." },
+        { "file": "sounds/BossAnnoyMe.mp3",         "label": "Boss annoy me." },
+        { "file": "sounds/NoMoreQuestions.mp3",     "label": "No more questions!" },
+        { "file": "sounds/LeaveMeAlone.mp3",        "label": "Leave me alone!" },
+        { "file": "sounds/MeHaveJob.mp3",           "label": "Me have job to do!" },
+        { "file": "sounds/WhaaatSpam.mp3",          "label": "Whaaat?" },
+        { "file": "sounds/ByGrom.mp3",              "label": "By Grom, stop it!" }
+      ]
+    },
+    "resource.limit": {
+      "sounds": [
+        { "file": "sounds/NotEnoughGold.mp3",       "label": "Not enough gold, boss." },
+        { "file": "sounds/NotEnoughLumber.mp3",     "label": "Not enough lumber." },
+        { "file": "sounds/MeTired.mp3",             "label": "Me tired, boss." },
+        { "file": "sounds/TooMuchWork.mp3",         "label": "Too much work." },
+        { "file": "sounds/NeedMoreHands.mp3",       "label": "Need more hands!" },
+        { "file": "sounds/FoodLow.mp3",             "label": "Food is low, boss." }
+      ]
+    }
+  }
+}
